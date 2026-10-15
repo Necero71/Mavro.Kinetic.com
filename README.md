@@ -27,6 +27,11 @@ WhatsApp is the international number, digits only (no + or spaces).
 
 ## Deploy
 
+GitHub Pages lets browsers cache CSS and JS for ~10 minutes. The page links them as
+`style.css?v=...` and `main.js?v=...`. **Change that `v` value in `index.html` whenever you edit
+the CSS or JS**, so visitors never get new HTML with old styling.
+
+
 GitHub Pages, branch `main`, root folder. Repo Settings > Pages > Deploy from a branch.
 
 ## Run locally
