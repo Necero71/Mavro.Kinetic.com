@@ -183,6 +183,11 @@ section[id] { scroll-margin-top: var(--header-h); }
 .shot { background: var(--carbon); padding: 10px; width: min(100%, 340px); }
 .shot img { width: 100%; height: auto; }
 .work .facts li { border-left-color: var(--coyote); }
+.tag span {
+  display: inline-block; padding: 0.3rem 0.8rem;
+  background: var(--coyote); color: var(--carbon);
+  font: 800 0.95rem/1 var(--display); letter-spacing: 0.12em; text-transform: uppercase;
+}
 .link {
   font-weight: 700; color: var(--tan);
   text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px;
