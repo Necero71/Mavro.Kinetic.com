@@ -4,7 +4,7 @@
   /* ---- Contact settings: fill these in and the send buttons appear ----
      whatsapp: international number, digits only, e.g. '27821234567'
      email:    e.g. 'you@example.com'                                */
-  var CONTACT = { whatsapp: '', email: 'mavro.kinetic@gmail.com' };
+  var CONTACT = { whatsapp: '27685271491', email: 'mavro.kinetic@gmail.com' };
 
   var $ = function (s) { return document.querySelector(s); };
   var root = document.documentElement;
