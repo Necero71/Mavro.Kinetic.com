@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mavro Kinetic | Websites, branding and web apps from Cape Town</title>
+<meta name="description" content="Mavro Kinetic designs and hand-codes fast, phone-first websites, brand identities and small installable web apps from Cape Town.">
+<meta name="theme-color" content="#121413">
+<link rel="canonical" href="https://necero71.github.io/Mavro.Kinetic.com/">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mavro Kinetic">
+<meta property="og:title" content="Mavro Kinetic | Built light. Built fast.">
+<meta property="og:description" content="Hand-coded websites, brand identities and small web apps from Cape Town.">
+<meta property="og:url" content="https://necero71.github.io/Mavro.Kinetic.com/">
+<meta property="og:image" content="https://necero71.github.io/Mavro.Kinetic.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@800;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Mavro Kinetic",
+  "description": "Web design, branding and small web apps, hand-coded and built phone-first.",
+  "url": "https://necero71.github.io/Mavro.Kinetic.com/",
+  "areaServed": "Worldwide",
+  "address": { "@type": "PostalAddress", "addressLocality": "Cape Town", "addressCountry": "ZA" },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website design and development" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand identity design" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web app and tool development" } }
+  ]
+}
+</script>
+
+<!-- Start-lights intro only runs when motion is allowed. Failsafe drops it after 4s. -->
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('arm');
+  setTimeout(function () { document.documentElement.classList.remove('arm'); }, 4000);
+}
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Shared race number: a stencilled 71 (gaps are the stencil bridges) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="n71" viewBox="0 0 508 440">
+    <path d="M44 24H268V92H44L24 72V44Z"/>
+    <path d="M178 114H268L148 416H58Z"/>
+    <path d="M318 132L392 52V132Z"/>
+    <path d="M428 24H484V416H408V44Z"/>
+  </symbol>
+</svg>
+
+<header class="site-header on-dark">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Mavro Kinetic, back to top">
+      <span class="badge cut-sm" aria-hidden="true">71</span>
+      <span>Mavro Kinetic</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a class="btn btn-primary btn-sm cut-sm" href="#brief">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero on-dark" id="top" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="lights" aria-hidden="true">
+        <span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span>
+      </div>
+      <h1 class="h-display" id="hero-title"><span>Built light.</span> <span>Built fast.</span></h1>
+      <div class="hero-body">
+      <div class="hero-copy">
+        <p class="lede">Mavro Kinetic designs and hand-codes websites, brand identities and small web apps from Cape Town. Phone-first, no page builders, nothing spare.</p>
+        <p class="hero-actions">
+          <a class="btn btn-primary cut" href="#brief">Start a project</a>
+          <a class="btn btn-ghost cut" href="#work">See the work</a>
+        </p>
+        <ul class="facts" aria-label="At a glance">
+          <li>Hand-coded HTML, CSS and JavaScript</li>
+          <li>Designed for phones first</li>
+          <li>Hosted fast and free on GitHub Pages</li>
+        </ul>
+      </div>
+      <div class="numeral" aria-hidden="true">
+        <svg viewBox="0 0 508 440" focusable="false">
+          <use class="ghost" href="#n71"/>
+          <use class="solid" href="#n71"/>
+        </svg>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 class="h-section" id="services-title">Services</h2>
+      <ul class="rows">
+        <li class="row">
+          <h3>Websites</h3>
+          <p>Hand-coded HTML, CSS and JavaScript, built phone-first and tested on real devices. No page builders, no heavy frameworks, and it runs on free static hosting so there is no server bill.</p>
+        </li>
+        <li class="row">
+          <h3>Branding</h3>
+          <p>A logo, colour palette and type choices, pulled together in a one-page brand sheet. Made to hold up on a website, a sticker and a social avatar.</p>
+        </li>
+        <li class="row">
+          <h3>Web apps and tools</h3>
+          <p>Small installable apps that keep working with no signal. Calculators, trackers and booking helpers, written in plain JavaScript. MK NAVKIT, below, is one.</p>
+        </li>
+        <li class="row">
+          <h3>Site tune-ups</h3>
+          <p>Already have a page? Fix what is slow, broken or awkward on a phone: faster loading, clearer buttons, better search previews, without a full rebuild.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section work on-dark" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <h2 class="h-section" id="work-title">Selected work</h2>
+
+      <article class="case">
+        <figure class="shot cut">
+          <img src="assets/img/fyr-speedz.webp" width="390" height="760" loading="lazy" decoding="async"
+               alt="The FYR_SPEEDZ website on a phone: a dark red-tinted page with the headline Precision Auto Electrical and Diagnostics, a green WhatsApp booking button and a list of services.">
+        </figure>
+        <div class="case-body">
+          <h3>FYR_SPEEDZ</h3>
+          <p>A booking site for a Cape Town auto electrical and diagnostics business with mobile service. The goal: get a customer from the page to a WhatsApp message in one tap.</p>
+          <ul class="facts">
+            <li>Every service opens a pop-up with a pre-written WhatsApp enquiry</li>
+            <li>Call and WhatsApp buttons stay within thumb reach</li>
+            <li>Search and share previews set up for the business</li>
+          </ul>
+          <p><a class="link" href="https://necero71.github.io/FYR-SPEEDZ/" target="_blank" rel="noopener noreferrer">Open the live site</a></p>
+        </div>
+      </article>
+
+      <article class="case">
+        <figure class="shot cut">
+          <img src="assets/img/mknav.webp" width="390" height="760" loading="lazy" decoding="async"
+               alt="MK NAVKIT on a phone: an olive and tan app with a mil range calculator showing a 300 metre result.">
+        </figure>
+        <div class="case-body">
+          <h3>MK NAVKIT</h3>
+          <p>A field companion for Arma Reforger players on Xbox, built to sit on a phone next to the console. Install it once and it works with no signal.</p>
+          <ul class="facts">
+            <li>Mil range estimator, grid-to-grid distance and bearing</li>
+            <li>Plot a contact, pace count with travel times, personal range card</li>
+            <li>Installs to the home screen and runs offline</li>
+          </ul>
+          <p><a class="link" href="https://necero71.github.io/MKNav/" target="_blank" rel="noopener noreferrer">Open the live app</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <h2 class="h-section" id="process-title">How a project runs</h2>
+      <ol class="steps">
+        <li>
+          <h3>Brief</h3>
+          <p>You describe what the site needs to do and who it is for. The form below takes about two minutes.</p>
+        </li>
+        <li>
+          <h3>Design</h3>
+          <p>Colours, type and layout are settled first, as a short plan you approve before any code is written.</p>
+        </li>
+        <li>
+          <h3>Build</h3>
+          <p>Hand-coded, then tested on a phone and in a desktop browser before you see it.</p>
+        </li>
+        <li>
+          <h3>Launch</h3>
+          <p>Published on fast static hosting, with the files handed over so the site is yours.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- BRIEF -->
+  <section class="section brief on-dark" id="brief" aria-labelledby="brief-title">
+    <div class="wrap brief-grid">
+      <div class="brief-intro">
+        <h2 class="h-section" id="brief-title">Start a project</h2>
+        <p class="lede">Fill in what you know. The brief writes itself as you type, ready to copy and send.</p>
+        <p class="note" id="contact-note">Copy the brief and send it to Mavro Kinetic (@mavro.kinetic).</p>
+      </div>
+
+      <form class="form" id="brief-form" autocomplete="on" novalidate>
+        <div class="field-pair">
+          <label class="field"><span>Your name</span>
+            <input type="text" name="name" autocomplete="name" placeholder="Jane Smith"></label>
+          <label class="field"><span>Business or project</span>
+            <input type="text" name="biz" autocomplete="organization" placeholder="Smith Plumbing"></label>
+        </div>
+
+        <fieldset class="field">
+          <legend>What do you need?</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="need" value="a new website"><span>New website</span></label>
+            <label class="chip"><input type="checkbox" name="need" value="branding (logo, colours, type)"><span>Branding</span></label>
+            <label class="chip"><input type="checkbox" name="need" value="a web app or tool"><span>Web app or tool</span></label>
+            <label class="chip"><input type="checkbox" name="need" value="a fix or speed-up for my existing site"><span>Fix my site</span></label>
+          </div>
+        </fieldset>
+
+        <label class="field"><span>When do you need it?</span>
+          <input type="text" name="when" placeholder="e.g. before December, no rush"></label>
+
+        <label class="field"><span>Anything else?</span>
+          <textarea name="details" rows="4" placeholder="What the site should do, links you like, your current website"></textarea></label>
+
+        <label class="field"><span>Your brief</span>
+          <textarea id="brief-out" rows="9" readonly></textarea></label>
+
+        <div class="actions">
+          <button class="btn btn-primary cut" type="button" id="copy-btn">Copy brief</button>
+          <a class="btn btn-ghost cut" id="wa-btn" href="#" target="_blank" rel="noopener noreferrer" hidden>Send on WhatsApp</a>
+          <a class="btn btn-ghost cut" id="mail-btn" href="#" hidden>Send by email</a>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="wrap foot">
+    <p>&copy; 2026 Mavro Kinetic. Cape Town, South Africa.</p>
+    <p>@mavro.kinetic</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
