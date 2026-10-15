@@ -4,7 +4,7 @@
   /* ---- Contact settings: fill these in and the send buttons appear ----
      whatsapp: international number, digits only, e.g. '27821234567'
      email:    e.g. 'you@example.com'                                */
-  var CONTACT = { whatsapp: '', email: '' };
+  var CONTACT = { whatsapp: '', email: 'mavro.kinetic@gmail.com' };
 
   var $ = function (s) { return document.querySelector(s); };
   var root = document.documentElement;
@@ -65,7 +65,7 @@
 
   if (CONTACT.whatsapp) waBtn.hidden = false;
   if (CONTACT.email) mailBtn.hidden = false;
-  if (CONTACT.whatsapp || CONTACT.email) note.textContent = 'Copy the brief, or send it straight from here.';
+  if (CONTACT.whatsapp || CONTACT.email) note.textContent = 'Send it straight from here, or copy it and message @mavro.kinetic.';
 
   form.addEventListener('input', function () { build(); status.textContent = ''; });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
