@@ -3,7 +3,7 @@
 
   /* ---- Contact settings: fill these in and the send buttons appear ----
      whatsapp: international number, digits only, e.g. '27821234567'
-     email:    e.g. 'hello@mavrokinetic.com'                                  */
+     email:    e.g. 'you@example.com'                                */
   var CONTACT = { whatsapp: '', email: '' };
 
   var $ = function (s) { return document.querySelector(s); };
