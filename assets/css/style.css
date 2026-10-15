@@ -230,6 +230,7 @@ html[data-view="gaming"] .m-knob { transform: translateX(30px); }
 .shot { background: var(--carbon); padding: 10px; width: min(100%, 340px); }
 .shot img { width: 100%; height: auto; }
 .work .facts li { border-left-color: var(--coyote); }
+.link-row { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; }
 .tag span {
   display: inline-block; padding: 0.3rem 0.8rem;
   background: var(--coyote); color: var(--carbon);
