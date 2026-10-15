@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-view="business">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -40,12 +40,24 @@
 }
 </script>
 
-<!-- Start-lights intro only runs when motion is allowed. Failsafe drops it after 4s. -->
+<!-- Runs before first paint: picks the view (?view=gaming, else last choice) so there is no flash.
+     Start-lights intro only runs when motion is allowed. Failsafe drops it after 4s. -->
 <script>
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.documentElement.classList.add('arm');
-  setTimeout(function () { document.documentElement.classList.remove('arm'); }, 4000);
-}
+(function () {
+  var d = document.documentElement, v = 'business';
+  try {
+    var q = new URLSearchParams(location.search).get('view');
+    if (q === 'gaming' || q === 'business') v = q;
+    else { var sv = localStorage.getItem('mk-view'); if (sv === 'gaming' || sv === 'business') v = sv; }
+  } catch (e) {}
+  d.setAttribute('data-view', v);
+  d.classList.add('js');
+  if (v === 'gaming') document.title = 'Mavro Kinetic | Gaming and sim racing';
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    d.classList.add('arm');
+    setTimeout(function () { d.classList.remove('arm'); }, 4000);
+  }
+})();
 </script>
 
 <link rel="stylesheet" href="assets/css/style.css">
@@ -66,24 +78,34 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 <header class="site-header on-dark">
   <div class="wrap bar">
-    <a class="brand" href="#top" aria-label="Mavro Kinetic, back to top">
+    <a class="brand" href="#main" aria-label="Mavro Kinetic, back to top">
       <span class="badge cut-sm" aria-hidden="true">71</span>
       <span>Mavro Kinetic</span>
     </a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <fieldset class="mode">
+      <legend class="sr-only">Site view</legend>
+      <label class="m-opt"><input type="radio" name="view" value="business" checked><span>Business</span></label>
+      <span class="m-track" id="m-track" aria-hidden="true"><i class="m-knob"></i></span>
+      <label class="m-opt"><input type="radio" name="view" value="gaming"><span>Gaming</span></label>
+    </fieldset>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a class="btn btn-primary btn-sm cut-sm" href="#brief">Start a project</a>
+      <a data-view-only="business" href="#services">Services</a>
+      <a data-view-only="business" href="#work">Work</a>
+      <a data-view-only="business" href="#process">Process</a>
+      <a data-view-only="business" class="btn btn-primary btn-sm cut-sm" href="#brief">Start a project</a>
+      <a data-view-only="gaming" href="#play">What I play</a>
+      <a data-view-only="gaming" href="#tools">Tools</a>
+      <a data-view-only="gaming" class="btn btn-primary btn-sm cut-sm" href="#find">Find me</a>
     </nav>
   </div>
 </header>
 
-<main id="main">
+<p class="sr-only" id="view-live" role="status" aria-live="polite"></p>
+<main id="main" tabindex="-1">
 
   <!-- HERO -->
-  <section class="hero on-dark" id="top" aria-labelledby="hero-title">
+  <section data-view-only="business" class="hero on-dark" id="top" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div class="lights" aria-hidden="true">
         <span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span>
@@ -113,7 +135,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </section>
 
   <!-- SERVICES -->
-  <section class="section" id="services" aria-labelledby="services-title">
+  <section data-view-only="business" class="section" id="services" aria-labelledby="services-title">
     <div class="wrap">
       <h2 class="h-section" id="services-title">Services</h2>
       <ul class="rows">
@@ -138,7 +160,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </section>
 
   <!-- WORK -->
-  <section class="section work on-dark" id="work" aria-labelledby="work-title">
+  <section data-view-only="business" class="section work on-dark" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <h2 class="h-section" id="work-title">Selected work</h2>
 
@@ -197,7 +219,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </section>
 
   <!-- PROCESS -->
-  <section class="section" id="process" aria-labelledby="process-title">
+  <section data-view-only="business" class="section" id="process" aria-labelledby="process-title">
     <div class="wrap">
       <h2 class="h-section" id="process-title">How a project runs</h2>
       <ol class="steps">
@@ -222,7 +244,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </section>
 
   <!-- BRIEF -->
-  <section class="section brief on-dark" id="brief" aria-labelledby="brief-title">
+  <section data-view-only="business" class="section brief on-dark" id="brief" aria-labelledby="brief-title">
     <div class="wrap brief-grid">
       <div class="brief-intro">
         <h2 class="h-section" id="brief-title">Start a project</h2>
@@ -266,12 +288,121 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </form>
     </div>
   </section>
+  <!-- ================= GAMING VIEW ================= -->
+
+  <!-- GAMING HERO -->
+  <section data-view-only="gaming" class="hero on-dark" aria-labelledby="g-hero-title">
+    <div class="wrap hero-grid">
+      <div class="lights" aria-hidden="true">
+        <span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span>
+      </div>
+      <h1 class="h-display" id="g-hero-title"><span>Lights out.</span> <span>Game on.</span></h1>
+      <div class="hero-body">
+        <div class="hero-copy">
+          <p class="lede">Sim racer, car #71. I race, play tactical games, and build the tools I wish I had, like a mil range kit for Arma Reforger and a setup book for F1 26.</p>
+          <p class="hero-actions">
+            <a class="btn btn-primary cut" href="#tools">See the tools</a>
+            <a class="btn btn-ghost cut" href="#find">Find me</a>
+          </p>
+        </div>
+        <div class="numeral" aria-hidden="true">
+          <svg viewBox="0 0 508 440" focusable="false">
+            <use class="ghost" href="#n71"/>
+            <use class="solid" href="#n71"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I PLAY -->
+  <section data-view-only="gaming" class="section" id="play" aria-labelledby="play-title">
+    <div class="wrap">
+      <h2 class="h-section" id="play-title">What I play</h2>
+      <ul class="rows">
+        <li class="row">
+          <h3>Sim racing</h3>
+          <p>Assetto Corsa Competizione, Forza, Trackmania and Project Motor Racing. Racing as @mavro.kinetic in car #71.</p>
+        </li>
+        <li class="row">
+          <h3>Tactical</h3>
+          <p>Rainbow Six Siege, where the plan matters more than the aim.</p>
+        </li>
+        <li class="row">
+          <h3>The rest</h3>
+          <p>Albion Online and No Man&rsquo;s Sky, for when the pace drops and the hours disappear.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section data-view-only="gaming" class="section work on-dark" id="tools" aria-labelledby="tools-title">
+    <div class="wrap">
+      <h2 class="h-section" id="tools-title">Tools I built</h2>
+
+      <article class="case">
+        <figure class="shot cut">
+          <img src="assets/img/mknav.webp" width="390" height="760" loading="lazy" decoding="async"
+               alt="MK NAVKIT on a phone: an olive and tan app with a mil range calculator showing a 300 metre result.">
+        </figure>
+        <div class="case-body">
+          <h3>MK NAVKIT</h3>
+          <p>A field companion for Arma Reforger players on Xbox, built to sit on a phone next to the console. Install it once and it works with no signal.</p>
+          <ul class="facts">
+            <li>Mil range estimator, grid-to-grid distance and bearing</li>
+            <li>Plot a contact, pace count with travel times, personal range card</li>
+            <li>Installs to the home screen and runs offline</li>
+          </ul>
+          <p><a class="link" href="https://necero71.github.io/MKNav/" target="_blank" rel="noopener noreferrer">Open the live app</a></p>
+        </div>
+      </article>
+
+      <article class="case">
+        <figure class="shot cut">
+          <img src="assets/img/pitwall.webp" width="390" height="760" loading="lazy" decoding="async"
+               alt="MK PITWALL on a phone: an olive and tan F1 26 setup sheet with fields for setup name, track and conditions, and plus and minus steppers for front wing and rear wing.">
+        </figure>
+        <div class="case-body">
+          <h3>MK PITWALL</h3>
+          <p class="tag"><span class="cut-sm">Pre-alpha</span></p>
+          <p>An F1 26 setup book for your phone or tablet. Keep a setup for each track and condition instead of hunting through notes. Early build, still changing.</p>
+          <ul class="facts">
+            <li>Setup sheet with quick steppers, saved per track and conditions</li>
+            <li>Compare any two setups side by side, with a symptom guide for handling problems</li>
+            <li>Installs to the home screen, runs offline, with export and import for backups</li>
+          </ul>
+          <p><a class="link" href="https://necero71.github.io/MK-Pitwall/" target="_blank" rel="noopener noreferrer">Try the early build</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FIND ME -->
+  <section data-view-only="gaming" class="section find on-dark" id="find" aria-labelledby="find-title">
+    <div class="wrap find-grid">
+      <div class="find-intro">
+        <h2 class="h-section" id="find-title">Find me</h2>
+        <p class="lede">Follow along as <strong>@mavro.kinetic</strong>.</p>
+        <p class="note" id="find-note">Racing, builds and updates.</p>
+      </div>
+      <div class="find-links">
+        <ul class="pills" id="social-list" aria-label="Social links" hidden></ul>
+        <p class="switch-cta">Looking for a website or branding?
+          <button class="btn btn-ghost cut" type="button" data-set-view="business">Switch to Business</button></p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer on-dark">
   <div class="wrap foot">
     <p>&copy; 2026 Mavro Kinetic. Cape Town, South Africa.</p>
-    <p>@mavro.kinetic</p>
+    <p>
+      <button class="linkbtn" type="button" data-view-only="business" data-set-view="gaming">Gaming side</button>
+      <button class="linkbtn" type="button" data-view-only="gaming" data-set-view="business">Business side</button>
+      <span aria-hidden="true">&middot;</span> @mavro.kinetic
+    </p>
   </div>
 </footer>
 

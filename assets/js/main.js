@@ -6,6 +6,14 @@
      email:    e.g. 'you@example.com'                                */
   var CONTACT = { whatsapp: '27685271491', email: 'mavro.kinetic@gmail.com' };
 
+  /* ---- Social links for the Gaming view: add a full https:// URL and the link appears ---- */
+  var SOCIALS = [
+    { name: 'Instagram', url: '' },
+    { name: 'TikTok',    url: '' },
+    { name: 'YouTube',   url: '' },
+    { name: 'Twitch',    url: '' }
+  ];
+
   var $ = function (s) { return document.querySelector(s); };
   var root = document.documentElement;
 
@@ -22,10 +30,69 @@
     if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
   });
 
-  /* ---- Start-lights intro: five lamps, lights out, number launches ---- */
-  var hero = $('.hero');
-  var lamps = Array.prototype.slice.call(document.querySelectorAll('.lamp'));
-  if (root.classList.contains('arm')) {
+  /* ---- View switch: Business <-> Gaming ---- */
+  var BUSINESS_TITLE = document.title;
+  var GAMING_TITLE = 'Mavro Kinetic | Gaming and sim racing';
+  var radios = Array.prototype.slice.call(document.querySelectorAll('input[name="view"]'));
+  var mainEl = $('#main'), live = $('#view-live');
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var view = root.getAttribute('data-view') === 'gaming' ? 'gaming' : 'business';
+  if (view === 'business') BUSINESS_TITLE = document.title;
+  else BUSINESS_TITLE = 'Mavro Kinetic | Websites, branding and web apps from Cape Town';
+
+  function paintView(v) {
+    view = v;
+    root.setAttribute('data-view', v);
+    radios.forEach(function (r) { r.checked = (r.value === v); });
+    document.title = v === 'gaming' ? GAMING_TITLE : BUSINESS_TITLE;
+  }
+  paintView(view);
+
+  function setView(v, keepFocus) {
+    if ((v !== 'gaming' && v !== 'business') || v === view) return;
+    var apply = function () {
+      paintView(v);
+      setMenu(false);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      try { localStorage.setItem('mk-view', v); } catch (e) { /* private mode */ }
+      try {
+        var u = new URL(location.href);
+        if (v === 'gaming') u.searchParams.set('view', 'gaming'); else u.searchParams.delete('view');
+        u.hash = '';
+        history.replaceState(null, '', u);
+      } catch (e) { /* file:// etc */ }
+      live.textContent = v === 'gaming' ? 'Showing gaming and sim racing' : 'Showing business';
+      if (!keepFocus) mainEl.focus({ preventScroll: true });
+      mainEl.classList.remove('swap');
+    };
+    if (reduceMotion) { apply(); return; }
+    mainEl.classList.add('swap');
+    setTimeout(apply, 140);
+  }
+
+  radios.forEach(function (r) { r.addEventListener('change', function () { if (r.checked) setView(r.value, true); }); });
+  $('#m-track').addEventListener('click', function () { setView(view === 'gaming' ? 'business' : 'gaming', true); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-set-view]'); if (b) setView(b.getAttribute('data-set-view'), false);
+  });
+
+  /* Social pills (only links you have filled in above) */
+  var liveSocials = SOCIALS.filter(function (s) { return /^https?:\/\//.test(s.url); });
+  if (liveSocials.length) {
+    var sList = $('#social-list');
+    liveSocials.forEach(function (s) {
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.href = s.url; a.textContent = s.name; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      li.appendChild(a); sList.appendChild(li);
+    });
+    sList.hidden = false;
+    $('#find-note').textContent = 'Racing, builds and updates. Pick a platform.';
+  }
+
+  /* ---- Start-lights intro: five lamps, lights out, number launches (runs on the view you land on) ---- */
+  var hero = $('.hero[data-view-only="' + view + '"]');
+  var lamps = hero ? Array.prototype.slice.call(hero.querySelectorAll('.lamp')) : [];
+  if (root.classList.contains('arm') && hero) {
     var step = 280, start = 400;
     lamps.forEach(function (l, i) { setTimeout(function () { l.classList.add('lit'); }, start + i * step); });
     setTimeout(function () {
